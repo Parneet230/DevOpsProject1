@@ -1,8 +1,6 @@
-# Use the httpd/apache base image
-FROM nginx:latest
+FROM tomcat:8.0-alpine
 
-# Copy website files to the container
-COPY . /usr/share/nginx/html
+ADD sample.war /usr/local/tomcat/webapps/
 
-# Expose port 80 for HTTP traffic
-EXPOSE 80
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
